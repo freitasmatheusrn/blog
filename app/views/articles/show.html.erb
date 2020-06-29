@@ -8,14 +8,20 @@
   <strong>Text:</strong>
   <%= @article.text %>
 </p>
-<p>
-  <strong>Title:</strong>
-  <%= @article.title %>
-</p>
- 
-<p>
-  <strong>Text:</strong>
-  <%= @article.text %>
-</p>
+
+<% if @article.comments.any? %>
+  <h3>Comments</h3>
+  <% @article.comments.each do |comment| %>
+  <p><%= comment.text%></p>
+  <%end%>
+<%else%>
+<p> Não existem comentários</p>
+<%end%>
+
+<h3>Faça o seu comentário</h3>
+<%= simple_form_for @article.comments.new, url: new_comment_article_path(@article) do |f| %>
+  <%= f.input :text, as: :text %>
+  <%= f.button :submit %>
+<% end %>
  
 <%= link_to 'Back', articles_path %>

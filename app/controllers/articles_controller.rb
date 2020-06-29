@@ -3,11 +3,24 @@ class ArticlesController < ApplicationController
         @articles = Article.all
     end
     def show
-        @article = Article.find(params[:id])
+      @article = Article.find(params[:id])
+    end
+    
+    def new
+    end
+
+    def new_comment
+      @article = Article.find(params[:id])
+      comment = @article.comments.new(text: params[:comment][:text])
+      if comment.save
+        flash[:notice] = "Comment successfully created"
+      else
+        flash[:alert] = "Comment fail... try again!"
       end
-     
-      def new
-      end
+      redirect_to article_path(@article)
+    end
+    
+
     def create
         @article = Article.new(article_params)
  
