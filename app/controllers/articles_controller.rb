@@ -7,6 +7,11 @@ class ArticlesController < ApplicationController
     end
     
     def new
+      @article = Article.new
+    end
+
+    def edit
+      @article = Article.find(params[:id])
     end
 
     def new_comment
@@ -22,14 +27,30 @@ class ArticlesController < ApplicationController
     
 
     def create
-        @article = Article.new(article_params)
- 
-        @article.save
-        redirect_to @article
+      @article = Article.new(article_params)
+      if @article.save
+        flash[:notice] = "successfully created"
+        redirect_to article_path(@article)
+      else
+        flash[:alert] = "Article fail... try again!"
+        render :new
       end
+    end
+
+    def update
+      @article = Article.find(params[:id])
+      @article.update_attributes(article_params)
+      if @article.save
+        flash[:notice] = "successfully created"
+        redirect_to article_path(@article)
+      else
+        flash[:alert] = "Article fail... try again!"
+        render :edit
+      end
+    end
        
-      private
-        def article_params
-          params.require(:article).permit(:title, :text)
-        end
+  private
+    def article_params
+      params.require(:article).permit(:title, :text, :subtitle)
+    end
 end

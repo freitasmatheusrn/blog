@@ -1,12 +1,13 @@
 
-<p>
-  <strong>Title:</strong>
+<h1>
   <%= @article.title %>
-</p>
+</h1>
+<h3><%= @article.subtitle%></h3>
+
+<p>Aproximadamente <%=@article.time_read%> minutos de leitura</p>
  
 <p>
-  <strong>Text:</strong>
-  <%= @article.text %>
+  <%= @article.text.html_safe %>
 </p>
 
 <% if @article.comments.any? %>
@@ -25,3 +26,4 @@
 <% end %>
  
 <%= link_to 'Back', articles_path %>
+<%= link_to 'Edit', edit_article_path(@article) %>
