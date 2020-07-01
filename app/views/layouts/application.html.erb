@@ -1,11 +1,11 @@
 <!DOCTYPE html>
+<html lang="pt-BR">
 <html>
   <head>
     <title>Blog</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
@@ -16,5 +16,6 @@
     <div class="alert" style="color:red;"><%= flash[:alert] %></div>
   <% end %>
     <%= yield %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>
