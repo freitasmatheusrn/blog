@@ -1,8 +1,10 @@
 class Article < ApplicationRecord
   has_many :comments
+  belongs_to :user
   validates :title, :text, presence: true
   validates :title, length: { in: 6..20 }
   before_validation :set_subtitle, on: :update
+
 
   
   def time_read

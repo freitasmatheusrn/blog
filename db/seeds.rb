@@ -5,7 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-Article.create(title: "Texto com 450", text:"<p>
+
+tiago = User.create(email: "tiagotobias2003@gmail.com", password: "123456", password_confirmation: "123456")
+master = User.create(email: "matheus@master.com", password: "123456", password_confirmation: "123456")
+
+tiago.articles.create(title: "Texto com 450", text:"<p>
 Lorem ipsum aliquet platea suscipit purus eleifend class, urna elit potenti malesuada cursus nisi eleifend, felis mauris aptent fusce arcu amet. 
 dictumst tincidunt ornare hac ultrices lobortis himenaeos iaculis, arcu porttitor consequat luctus ut vivamus, donec volutpat auctor lobortis posuere mattis erat, facilisis luctus habitant hendrerit accumsan. 
 eros iaculis rutrum mi semper sit hac nullam, fames eu consequat netus sociosqu ut dictumst, euismod egestas in tincidunt rutrum etiam. 
@@ -37,7 +41,7 @@ nisi velit sollicitudin, class.
 </p>")
 
 
-Article.create(title: "326 palavras", text:"<p>
+master.articles.create(title: "326 palavras", text:"<p>
 Lorem ipsum ac auctor nulla aliquam nisl aliquam ac praesent elit venenatis lacinia ac, tempor potenti dolor dictum leo fringilla taciti suscipit malesuada cubilia nibh. 
 lobortis sagittis massa justo tristique augue habitant mollis per magna, hac arcu libero hendrerit est pharetra senectus ultricies, maecenas sociosqu aenean sem erat morbi non donec. 
 purus congue erat purus lacinia non in aenean cras semper sollicitudin nam, praesent dolor duis phasellus volutpat sagittis morbi posuere neque diam, blandit nisi primis imperdiet risus nam augue tortor libero suscipit. 
@@ -56,7 +60,7 @@ lacus morbi conubia dictum elementum lectus consequat curabitur ullamcorper tell
 faucibus litora bibendum in facilisis posuere habitasse scelerisque tellus turpis, sed ullamcorper nunc nec pellentesque viverra velit orci, sodales nibh quam integer amet netus aliquam erat. 
 curae dictum curae himenaeos dictum nostra, arcu duis aliquam. 
 </p>")
-Article.create(title: "Texto com 666 palavras", text:"<p>
+tiago.articles.create(title: "Texto com 666 palavras", text:"<p>
 Lorem ipsum justo consectetur aliquet porttitor per convallis a, dolor eget sagittis donec tincidunt conubia sit donec sodales, commodo quisque nostra bibendum vestibulum tellus iaculis. 
 donec eu ad eleifend lacus fusce dapibus mauris pellentesque fames ultricies primis curae proin platea, nam fermentum cursus cubilia morbi urna sodales quis facilisis erat purus congue aliquam. 
 viverra mauris praesent integer laoreet molestie dapibus scelerisque sollicitudin pulvinar cubilia sagittis nostra, sociosqu rutrum habitant felis tortor curabitur sapien nunc ullamcorper suspendisse sit, aliquam arcu tempus auctor congue turpis porttitor sodales litora dictumst imperdiet. 
@@ -97,5 +101,5 @@ Duis aliquam libero sem accumsan vehicula quam, dapibus nulla lorem habitant eli
 mollis donec vulputate vehicula aptent molestie congue potenti ornare gravida pretium et, commodo nam fermentum inceptos augue sagittis eleifend purus malesuada donec. 
 cras ultricies aptent gravida dictumst sem aliquet ante ligula, libero ligula taciti sed auctor inceptos gravida tincidunt, potenti magna eu sapien a nunc justo. 
 </p>")
-Article.create(title: "Star wars3", text:"Phantom Menace")
-Article.create(title: "Star wars4", text:"Phantom Menace")
+tiago.articles.create(title: "Star wars3", text:"Phantom Menace")
+master.articles.create(title: "Star wars4", text:"Phantom Menace")

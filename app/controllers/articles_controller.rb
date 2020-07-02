@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show] 
+
     def index
         @articles = Article.all
     end
@@ -7,11 +9,11 @@ class ArticlesController < ApplicationController
     end
     
     def new
-      @article = Article.new
+      @article = current_user.articles.new
     end
 
     def edit
-      @article = Article.find(params[:id])
+      @article = current_user.articles.find(params[:id])
     end
 
     def new_comment
@@ -27,7 +29,7 @@ class ArticlesController < ApplicationController
     
 
     def create
-      @article = Article.new(article_params)
+      @article = current_user.articles.new(article_params)
       if @article.save
         flash[:notice] = "successfully created"
         redirect_to article_path(@article)
@@ -38,7 +40,7 @@ class ArticlesController < ApplicationController
     end
 
     def update
-      @article = Article.find(params[:id])
+      @article = current_user.articles.find(params[:id])
       @article.update_attributes(article_params)
       if @article.save
         flash[:notice] = "successfully created"

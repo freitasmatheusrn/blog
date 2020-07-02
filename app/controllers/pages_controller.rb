@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-
+  skip_before_action :authenticate_user!
   def index
     if params[:id] && template_exists?(params[:id], ["pages"])
       load_variable
