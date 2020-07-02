@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'welcome/index'
+
   resources :articles do 
     post 'new_comment', on: :member
   end
