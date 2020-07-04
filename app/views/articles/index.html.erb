@@ -1,3 +1,6 @@
+<div class="container">
+<% current_user.has_role?(:author) ? visitor = "Olá autor" : visitor = "Bem vindo leitor!" %> 
+<h5 style="color:red"> <%=visitor%></h5>
 <h1>Listing Articles</h1>
  
 <table>
@@ -13,6 +16,7 @@
       <td><%= truncate(strip_tags(article.text), length: 120) { link_to "Continue", article_path(article) } %></td>
     </tr>
   <% end %>
-
-<%= link_to 'New article', new_article_path  if user_signed_in?%>
 </table>
+
+<%= link_to 'Novo artigo', new_article_path, class:"btn btn-primary"  if current_user.has_role? :author%>
+</div>

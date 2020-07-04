@@ -1,5 +1,6 @@
 class ArticlesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show] 
+  before_action :check_author, only: [:new, :create, :edit, :update]
 
     def index
         @articles = Article.all
@@ -54,5 +55,12 @@ class ArticlesController < ApplicationController
   private
     def article_params
       params.require(:article).permit(:title, :text, :subtitle)
+    end
+
+    def check_author
+      unless current_user.has_role?(:author)
+        flash[:alert] = "Você não tem permissão para criar artigos!!!"
+        redirect_to articles_path
+      end 
     end
 end
